@@ -1,0 +1,43 @@
+
+
+
+*****2019-06-20 10:48:54.609537*****
+
+Checking for linux64 geckodriver:v0.24.0 in cache
+Driver found in /home/local/NIST/jfl2/.wdm/geckodriver/v0.24.0/linux64/geckodriver
+
+---New search 2019-06-20 10:49:05.626685---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:12.906657---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:20.207383---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:27.502112---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:34.776020---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:42.064724---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:49.318808---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:49:56.562256---
+Paper not found (search)
+Exiting: No driver
+
+---New search 2019-06-20 10:50:03.801516---
+Paper not found (search)
+Exiting: No driver
