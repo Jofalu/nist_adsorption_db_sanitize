@@ -9792,7 +9792,7 @@
  {'DOI': '10.1016/j.micromeso.2009.01.016',
   'authors': ['22cdb6953fb19886b9cab1b2bba0f05710649d53',
               '6f840679b9d68e2031a9eae743dc5027e73658af',
-              '0341855ef7c252e25ba078565369a41cc9edb11d',
+              '0000-0002-3608-8003',
               'ea7f68de883ce5bc0df6254402ff01166af52a7d'],
   'journal': 'Microporous and Mesoporous Materials',
   'title': 'Atomically detailed models of gas mixture diffusion through CuBTC '
@@ -19927,7 +19927,7 @@
  {'DOI': '10.1021/Jp050948l',
   'authors': ['f1159b677f1ccef3f95a1e81cf2da79adcd43c3c',
               '4da4504729a11f73639bf48712d688fd8b17bbe1',
-              '0341855ef7c252e25ba078565369a41cc9edb11d'],
+              '0000-0002-3608-8003'],
   'journal': 'The Journal of Physical Chemistry B',
   'title': 'Adsorption of Gases in Metal Organic Materials:\xa0 Comparison of '
            'Simulations and Experiments'},
@@ -20293,7 +20293,7 @@
   'authors': ['2450e13af472d31efae9967c80ba4299b73b011a',
               '7b24c95a97441dcb24086e456b29322d4519bf68',
               '148f9622bc8a9e95e5e194f9b211cd0fea23f604',
-              '0341855ef7c252e25ba078565369a41cc9edb11d'],
+              '0000-0002-3608-8003'],
   'journal': 'The Journal of Physical Chemistry A',
   'title': 'Atomic Charges Derived from Electrostatic Potentials for Molecular '
            'and Periodic Systems'},
@@ -21705,7 +21705,7 @@
               '245cb4c454051ff1eaa0342165f117a7ef05d8e3',
               'c989897aa080a4f4106d1713834c8a7717df6bb9',
               'e8c0cb44afbd6f1288562e167ed78b92289d1af4',
-              '0341855ef7c252e25ba078565369a41cc9edb11d'],
+              '0000-0002-3608-8003'],
   'journal': 'The Journal of Physical Chemistry C',
   'title': 'Adsorption and Diffusion of Hydrogen in a New Metal−Organic '
            'Framework Material: [Zn(bdc)(ted)0.5]'},
@@ -21912,7 +21912,7 @@
   'authors': ['e3ab21ac99a49f39383293edd8dd25aa435ff889',
               '6f840679b9d68e2031a9eae743dc5027e73658af',
               '404d81f0152fee1a6635703474c64b6109b6b2ab',
-              '0341855ef7c252e25ba078565369a41cc9edb11d'],
+              '0000-0002-3608-8003'],
   'journal': 'The Journal of Physical Chemistry C',
   'title': 'Adsorption and Diffusion of Light Gases in ZIF-68 and ZIF-70: A '
            'Simulation Study'},
@@ -22878,7 +22878,7 @@
  {'DOI': '10.1021/La800486f',
   'authors': ['22cdb6953fb19886b9cab1b2bba0f05710649d53',
               '6f840679b9d68e2031a9eae743dc5027e73658af',
-              '0341855ef7c252e25ba078565369a41cc9edb11d',
+              '0000-0002-3608-8003',
               'ea7f68de883ce5bc0df6254402ff01166af52a7d'],
   'journal': 'Langmuir',
   'title': 'Testing the Accuracy of Correlations for Multicomponent Mass '
@@ -28944,7 +28944,7 @@
               '2450e13af472d31efae9967c80ba4299b73b011a',
               '58f63c7018eace7267e324e848c6a4fe7b24e072',
               '1c1217231c0515e8bc819f7ba18474738365bfab',
-              '0341855ef7c252e25ba078565369a41cc9edb11d',
+              '0000-0002-3608-8003',
               '0ab0d7d20d1254051099c14e4d6d3f7d0ea550a0'],
   'journal': 'Chemical Science',
   'title': 'Systematic modulation and enhancement of CO2 : N2 selectivity and '
@@ -31423,7 +31423,7 @@
  {'DOI': '10.1063/1.1423665',
   'authors': ['299e201bacb566c6734ae083253382907be7f398',
               'ea7f68de883ce5bc0df6254402ff01166af52a7d',
-              '0341855ef7c252e25ba078565369a41cc9edb11d'],
+              '0000-0002-3608-8003'],
   'journal': 'The Journal of Chemical Physics',
   'title': 'Adsorption and separation of hydrogen isotopes in carbon '
            'nanotubes: Multicomponent grand canonical Monte Carlo simulations'},
@@ -32029,7 +32029,7 @@
  {'DOI': '10.1080/08927020802398926',
   'authors': ['6f840679b9d68e2031a9eae743dc5027e73658af',
               'e3ab21ac99a49f39383293edd8dd25aa435ff889',
-              'd6ba1b6f0311e8fc8f522aa426fe17806c165efa'],
+              '0000-0002-3608-8003'],
   'journal': 'Molecular Simulation',
   'title': 'The importance of charge–quadrupole interactions for H2adsorption '
            'and diffusion in CuBTC'},
@@ -32100,7 +32100,7 @@
               '245cb4c454051ff1eaa0342165f117a7ef05d8e3',
               'e8c0cb44afbd6f1288562e167ed78b92289d1af4',
               'c989897aa080a4f4106d1713834c8a7717df6bb9',
-              '0341855ef7c252e25ba078565369a41cc9edb11d'],
+              '0000-0002-3608-8003'],
   'journal': 'Molecular Simulation',
   'title': 'One-dimensional adsorption and diffusion in Zn(tbip)'},
  {'DOI': '10.1080/08927022.2011.561432',
