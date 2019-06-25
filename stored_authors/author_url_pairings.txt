@@ -9,7 +9,7 @@
  '0000-0002-2980-7997': 'https://www.researchgate.net/profile/Carlos_Arean',
  '0000-0002-4249-6118': 'https://www.researchgate.net/scientific-contributions/2096360797_R_L_Siegelman',
  '0000-0002-4427-2150': 'https://www.researchgate.net/profile/Dan_Zhao71',
- '0000-0002-4662-8448': None,
+ '0000-0002-4662-8448': 'https://www.researchgate.net/scientific-contributions/39753945_Covadonga_Pevida',
  '0000-0002-4907-7418': 'https://www.researchgate.net/profile/Asim_Bhaumik',
  '0000-0002-5115-1488': 'https://www.researchgate.net/profile/Zhong_Li',
  '0000-0002-5237-1255': 'https://www.researchgate.net/profile/Yu_Zhu21',
