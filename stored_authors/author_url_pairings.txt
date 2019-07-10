@@ -197,7 +197,7 @@
  '318018bb75fc2ac1be4f09dc99a5aa80a73a9530': 'https://www.researchgate.net/scientific-contributions/2125666137_Ch_Garnier',
  '31887b2aaeac3e03aa86a0e1796b0cacbdfb4fb7': 'https://www.researchgate.net/profile/K_Kemp',
  '3268639aeed625564a9329d9feb3df15d9e7bab1': 'https://www.researchgate.net/scientific-contributions/2034134444_Yun_Kyeong_Kim',
- '328be3ca8df205300b357d6be62a6b0a172a96dc': 'https://www.researchgate.net/scientific-contributions/39152934_Omar_M_Yaghi',
+ '328be3ca8df205300b357d6be62a6b0a172a96dc': 'https://www.researchgate.net/profile/Omar_Yaghi',
  '335eaad8553ff506b20db5de53e59e311af63eff': 'https://www.researchgate.net/scientific-contributions/39074199_Tomoyuki_Akutagawa',
  '342ed8870646db1de48f90aa97aa1698a3bed1ab': 'https://www.researchgate.net/scientific-contributions/2068821940_Jong-Kyu_Kim',
  '34920abb810793267ab8f76e801feacff38f270f': 'https://www.researchgate.net/scientific-contributions/72094456_JE_Fitzgerald',
