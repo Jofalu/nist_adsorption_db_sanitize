@@ -5843,7 +5843,7 @@
   'title': 'Adsorptive denitrogenation of model fossil fuels with Lewis '
            'acid-loaded metal–organic frameworks (MOFs)'},
  {'DOI': '10.1016/j.cej.2014.07.119',
-  'authors': ['0000-0003-4428-0537',
+  'authors': ['0000-0003-1997-991X',
               'd02231f9b035f530c22c723bc512fe6c7ed89ed7',
               '8aaa59c113ea5d18a60c0ea5d8ce12bab023ac05',
               'e841010c89db43554708a84baa084a522be6ea34',
@@ -9398,7 +9398,7 @@
   'authors': ['d8a6ffaedb3e36d15dd1e85760bb361f7f55299f',
               'bea5fae4a7a109a4d5e3fbdb4b9e20b1e56b4534',
               '7e7254ffc6a248391483d591441d83148056b609',
-              '1ac3f7d8e3be72e3ed0d9a50c5c9c64153abb8b0'],
+              '0000-0001-5905-8336'],
   'journal': 'Journal of Membrane Science',
   'title': 'Synthesis, characterization and gas transport properties of MOF-5 '
            'membranes'},
@@ -11784,7 +11784,7 @@
            'PSA: Breakthrough experiments and process design'},
  {'DOI': '10.1016/j.seppur.2013.04.033',
   'authors': ['036b2702a63346e66ffef8c2dc91d51b933bb335',
-              '1ac3f7d8e3be72e3ed0d9a50c5c9c64153abb8b0'],
+              '0000-0001-5905-8336'],
   'journal': 'Separation and Purification Technology',
   'title': 'Organic solvent pervaporation properties of MOF-5 membranes'},
  {'DOI': '10.1016/j.seppur.2014.01.048',
@@ -16769,7 +16769,7 @@
               'bea5fae4a7a109a4d5e3fbdb4b9e20b1e56b4534',
               '036b2702a63346e66ffef8c2dc91d51b933bb335',
               '7e7254ffc6a248391483d591441d83148056b609',
-              '1ac3f7d8e3be72e3ed0d9a50c5c9c64153abb8b0'],
+              '0000-0001-5905-8336'],
   'journal': 'Industrial & Engineering Chemistry Research',
   'title': 'Gas Separation Properties of Metal Organic Framework (MOF-5) '
            'Membranes'},
@@ -16976,7 +16976,7 @@
  {'DOI': '10.1021/Ie900665f',
   'authors': ['d8a6ffaedb3e36d15dd1e85760bb361f7f55299f',
               '7e7254ffc6a248391483d591441d83148056b609',
-              '1ac3f7d8e3be72e3ed0d9a50c5c9c64153abb8b0'],
+              '0000-0001-5905-8336'],
   'journal': 'Industrial & Engineering Chemistry Research',
   'title': 'Adsorption and Diffusion of Carbon Dioxide on Metal−Organic '
            'Framework (MOF-5)'},
@@ -26478,7 +26478,7 @@
            'enhanced hydrostability'},
  {'DOI': '10.1039/C2cc38512k',
   'authors': ['f61330e65af8f5c7a6778c2edd2d3587dd4e610b',
-              '1ac3f7d8e3be72e3ed0d9a50c5c9c64153abb8b0'],
+              '0000-0001-5905-8336'],
   'journal': 'Chemical Communications',
   'title': 'Synthesis of an organophilic ZIF-71 membrane for pervaporation '
            'solvent separation'},

@@ -37,7 +37,6 @@
  ('Dorina', 'Sava'): ['72f03028af97ca170809e8096fd0256effde47f3',
                       '8c1cde6b87a88689293c80705333f6f7c9079b15'],
  ('Fumin', 'Zhang'): ['0000-0003-1997-991X',
-                      '0000-0003-4428-0537',
                       '4cb1b11e47b2020fb22c36178607224ce552e66a'],
  ('Gilberto', 'de Sá'): ['0290b951118f82bb5e317c5901ba344b3a7c1876',
                          'c21ddcda183ce5e8a3ecd8c978adcf4af6767eb3'],
