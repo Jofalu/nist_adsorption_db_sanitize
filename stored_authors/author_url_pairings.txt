@@ -8,7 +8,7 @@
  '0000-0002-1328-7376': 'https://www.researchgate.net/profile/Darren_Broom',
  '0000-0002-1894-366X': 'https://www.researchgate.net/profile/Laura_Espinal',
  '0000-0002-2980-7997': 'https://www.researchgate.net/profile/Carlos_Arean',
- '0000-0002-3608-8003': 'NOT_FOUND2',
+ '0000-0002-3608-8003': 'https://www.researchgate.net/profile/Karl_Johnson13',
  '0000-0002-4249-6118': 'https://www.researchgate.net/scientific-contributions/2096360797_R_L_Siegelman',
  '0000-0002-4427-2150': 'https://www.researchgate.net/profile/Dan_Zhao71',
  '0000-0002-4662-8448': 'https://www.researchgate.net/scientific-contributions/39753945_Covadonga_Pevida',
