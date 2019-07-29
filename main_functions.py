@@ -507,7 +507,190 @@ def scrape_authors(search_engine):
         
     sys.stdout = original_file_descriptor
     
-
+def comparing_scraped():
+    with open("./stored_authors/author_url_pairings.txt", encoding="utf8") as pairings_file:
+        author_url_pairings = eval(pairings_file.read())
+    with open("./stored_authors/unknown_authors.txt", encoding="utf8") as unknowns_file:
+        unknown_authors = eval(unknowns_file.read())
+    with open("./stored_authors/duplicate_authors.txt", encoding="utf8") as duplicates_file:
+        duplicate_authors = eval(duplicates_file.read())
+    with open("./stored_authors/authors_ids.txt", encoding="utf8") as authors_ids_file:
+        authors_ids = eval(authors_ids_file.read())
+        
+    # Used for reference when checking for authors in duplicate list
+    unpacked_duplicates = set()
+    for author_list in duplicate_authors.values():
+        for author in author_list:
+            unpacked_duplicates.add(author)
+    sorted_unpacked_duplicates = sorted(list(unpacked_duplicates))
     
-def test():
-    print("test")
+    h_likely = [] # Highly likely, unknowns that have matches
+    possible = [] # Moderately likely, the ones whose possible matches have similar characters
+    unlikely = [] # Unlikely, few matching characters
+    # Pairs duplicates
+    duplicate_pairing = {}
+    for author, url in author_url_pairings.items():
+        if author in sorted_unpacked_duplicates:
+            duplicate_pairing[url] = []
+    # Iterates through duplicates and appends pairings for each URL
+    for author, pair in duplicate_authors.items():
+        for pair_id in pair:
+            duplicate_pairing[author_url_pairings[pair_id]].append(pair_id)
+    merged_pairing = deepcopy(duplicate_pairing)
+    # Generates list of all the url IDs for any urls that have them (i.e. urls with "contributions"
+    url_num_list = []
+    for url in duplicate_pairing:
+        if "contributions" in url:
+            url_num_list.append(re.search(r"\d+", url).group(0))
+    # Generates list for all url IDs that have > 1 urls that contain them
+    same_num_list = [num for num, count in Counter(url_num_list).items() if count > 1]
+    # Iterates through nums then urls: longest_url -> longest (most complete name) to set as the new merged key
+    # merged_entries -> merging of the values of the keys for assigning to the new merged key 
+    for num in same_num_list:
+        longest_url = ""        # Will be used as the key of the new merged entry (longer name is almost always the most detailed name)
+        url_list = []           # Keeps track of urls to remove them from merged_pairing 
+        merged_entries = []     # Used a value for new merged entry
+        # Finds values and key for merging values
+        for url in duplicate_pairing:
+            if num in url:
+                url_list.append(url)
+                merged_entries += duplicate_pairing[url]
+                # Assigns longest_url for use as a key
+                if len(url) > len(longest_url):
+                    longest_url = url
+        # Merges/assigns values import itertools
+        for url in url_list:
+            if url == longest_url:
+                merged_pairing[url] = merged_entries
+            # Removes other unmerged entries
+            else:
+                merged_pairing.pop(url)
+    for url, matches in merged_pairing.items():
+        if len(matches) > 1:
+            h_likely.append(matches)
+    
+    # Pairs unknown names (e.g. first initial names)
+    unknown_pairing = {}
+    for unknown in unknown_authors:
+        unknown_pairing[unknown] = None
+
+    for author, pair in unknown_authors.items():
+        if author in author_url_pairings:
+            author_url = author_url_pairings[author]
+        else:
+            author_url = "no"
+
+        found = "Unsure"
+        for pair_id in pair:
+            pair_url = author_url_pairings[pair_id]
+
+            if "contributions" in author_url and "contributions" in pair_url:
+                author_num = re.search(r"\d+", author_url).group(0)
+                pair_num = re.search(r"\d+", pair_url).group(0)
+                if author_num == pair_num:
+                    found = pair_id
+                    h_likely.append([author, pair_id])
+            elif author_url ==  pair_url:
+                found = pair_id
+                h_likely.append([author, pair_id])
+        unknown_pairing[author] = found
+    
+    all_h_likely_values = list(itertools.chain(*h_likely))
+    h_likely_duplicates = [author for author, count in Counter(all_h_likely_values).items() if count > 1]
+    
+    # Selects an author as the "root" (the longest/one with the most special characters)
+    processing_roots = {}
+    root_names = {}
+    # Iterates through the lists in h_likely
+    for matches in h_likely:
+        root_name = ""              # Longest/most accurate name to have everything merge into for database
+        root_id = ""                # ID of the root author
+        to_be_merged = deepcopy(matches) # remember to remove the root from matches
+        # For every author_id in the matches list
+        for author in matches: 
+            full_name = authors_ids[author][0] + "_" + authors_ids[author][1] + "_" + authors_ids[author][2]
+            if len(author) == 19: # i.e. if the author_id is an ORC ID since ORC IDs are 19 characters while regular ID hashes are 40 characters
+                if root_id == "":
+                    root_id = author
+                else: # If there is a different ORC ID already (two different orc id == issue)
+                    print(root_id + " " + author + "***** THESE ARE NOT THE SAME PERSON *****")
+            if len(full_name) > len(root_name):
+                root_name = full_name
+                temp_id = author
+        if root_id == "": 
+            root_id = temp_id
+        to_be_merged.remove(root_id)
+        processing_roots[root_id] = to_be_merged
+        root_names[root_id] = root_name
+
+    with open("./stored_authors/root_names.txt", 'w') as root_out:
+        pprint(root_names, stream = root_out)
+    with open("./stored_authors/mergees.txt", 'w') as mergees_out:
+        pprint(processing_roots, stream = mergees_out)
+
+def select_and_print(cursor, command_string):
+    """
+    Selects entries from database and prints it out to the python interpreter. 
+    
+    Parameters: 
+    cursor         : Sqlite cursor object - the sqlite3 cursor created from .cursor() on a connected sqlite 3 database
+    command_string : String               - the entire select SQL command (e.g. "select * from testing123;")
+    """
+    
+    cursor.execute(command_string)
+
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row.keys())
+
+        string = ""
+        for key in row.keys():
+            string += str(row[key])
+            string += " | "
+        # print(str(row['test_1']) + " | " + str(row['test_2']))
+
+        print(string)
+        
+    # print(rows.keys())
+    
+    # print(rows[0]['test_1'])
+    # print(rows[0]['test_2'])
+    print("---------------")
+    
+def update_values(cursor, root_id, mergee_id, new_root_name):
+    # Updates given, middle, and family names of root_id
+    
+    if new_root_name != "root":
+        string_tokens = new_root_name.split('_')
+
+        root_name_update = "update DBADSORPTION_SANDBOX.authors set given_name = '" + string_tokens[0] + "' where author_id = '" + root_id + "';"
+        cursor.execute(root_name_update)
+
+        root_name_update = "update DBADSORPTION_SANDBOX.authors set middle_name = '" + string_tokens[1] + "' where author_id = '" + root_id + "';"
+        cursor.execute(root_name_update)
+
+        root_name_update = "update DBADSORPTION_SANDBOX.authors set family_name = '" + string_tokens[2] + "' where author_id = '" + root_id + "';"
+        cursor.execute(root_name_update)
+
+    # Iterates through mergees and changes each foreign key in biblio_authors to the root_id 
+    foreign_change_string = "update DBADSORPTION_SANDBOX.biblio_authors set author_id = '" + root_id + "' where author_id = '" +  mergee_id + "';"
+    cursor.execute(foreign_change_string)
+    
+    delete_string = "DELETE from DBADSORPTION_SANDBOX.authors WHERE author_id = '" + mergee_id + "';"
+    cursor.execute(delete_string)    
+        
+def sql_database_writer(username, password, database_name):
+    with open("./stored_authors/root_names.txt", 'r') as root_out:
+        root_names = eval(root_out.read())
+    with open("./stored_authors/mergees.txt", 'r') as mergees_out:
+        mergees = eval(mergees_out.read())
+    
+    mariadb_connect = mariadb.connect(user=username, passwd=password, database=database_name)
+    already_done_foreign = []
+    for root, pair in mergees.items():
+
+        for person in pair:
+            already_done_foreign.append(person)
+
+            if root not in already_done_foreign:
+                update_values(cursor, root, person, root_names[root])
