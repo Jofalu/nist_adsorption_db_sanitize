@@ -738,6 +738,15 @@ def update_values(cursor, root_id, mergee_id, new_root_name):
     cursor.execute(delete_string)    
         
 def sql_database_writer(username, password, database_name):
+    """
+    Main loop that iterates through mergees and updates them with update_values
+    
+    Parameters:
+    username      : string - Username for logging into database
+    password      : string - Password for logging into database
+    database_name : string - Database name for making the connection
+    """
+    
     with open("./stored_authors/root_names.txt", 'r') as root_out:
         root_names = eval(root_out.read())
     with open("./stored_authors/mergees.txt", 'r') as mergees_out:
