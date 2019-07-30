@@ -10,11 +10,20 @@ database_name="DBADSORPTION_SANDBOX"
 
 # Function calls, actually runs the script
 main_functions.authors2(host_name)
+print("authors2 done")
 time.sleep(1)
+
 main_functions.pairing_unknown_authors()
+print("pairing_unknown_authors done")
 time.sleep(1)
+
 main_functions.scrape_authors(search_engine)
+print("scrape_authors done")
 time.sleep(1)
+
 main_functions.comparing_scraped()
+print("comparing_scraped done")
 time.sleep(1)
+
 main_functions.sql_database_writer(username, password, database_name)
+print("sql_database_writer done")
