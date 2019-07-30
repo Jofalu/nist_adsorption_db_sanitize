@@ -181,8 +181,8 @@ def obtain_driver(url):
     """
     
     buttons = []
-    driver_options = Options()
-    driver_options.headless = True
+    driver_options = Options() # Creates options object
+    driver_options.headless = True # Indicates that the firefox browser gui will not open
     
     print("\n\n*****" + str(datetime.datetime.now()) + "*****")
     
