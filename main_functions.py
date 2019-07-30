@@ -196,7 +196,7 @@ def obtain_driver(url):
 
 def click_and_wait(driver, element, find_elements_by):
     """ 
-    Clicks on element and waits for a page load. 
+    Clicks on element and waits for the next page load. 
     
     Parameters:
     driver           : webdriver - existing webdriver
@@ -213,12 +213,12 @@ def click_and_wait(driver, element, find_elements_by):
             button = driver.find_element_by_class_name(element)
             
         driver.execute_script("arguments[0].click()", button)
-    except:
+    except: # If the specified button is not found
         print("No button")
         
-    old_driver = driver.find_element_by_tag_name('html')
+    old_driver = driver.find_element_by_tag_name('html') # Saves state of driver by tracking the first html tag
 
-    WebDriverWait(driver, 10).until(EC.staleness_of(old_driver))
+    WebDriverWait(driver, 10).until(EC.staleness_of(old_driver)) # Waits until the previous state of the driver (old_driver) is stale
     
 def search_paper(doi, driver, engine):
     """
