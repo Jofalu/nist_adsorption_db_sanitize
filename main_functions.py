@@ -446,7 +446,9 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
     pairing_dict  : dict             - To store the URLs into (for the respective author indicated by author_id)
     author_id     : int              - The searched author's id for usage in pairing_dict 
     
-    Returns: the integer number of matches found on the page 
+    Returns: the integer number of matches found on the page.
+    
+    Sets dict entry equal to NOT_FOUND2 if the author is not found, or Duplicates if more than 1 match is identified
     """    
     
     time.sleep(1) # Increased to 1 for stability
@@ -457,13 +459,14 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
         return -1
     
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    people = soup.find_all('div', {"class": "nova-v-person-list-item__title"})
+    people = soup.find_all('div', {"class": "nova-v-person-list-item__title"}) # obtains list of people
     
     print("Searching for: " + str(author_tokens))
     
     match_count = 0
     answer = ""
     
+    # Iterates through people and identifies if it's a match with the author or not
     for person in people:     
         author_name = person.find('a').string
         author_url = person.find('a').get("href")
@@ -475,9 +478,9 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
         else:
             print(author_url + " ~ " + author_name)
 
-    if match_count == 0:
+    if match_count == 0: # No matches found
         answer = "NOT_FOUND2"
-    elif match_count > 1:
+    elif match_count > 1: # More than one match found
         answer = "Duplicates"
         
     print("Writing: " + answer)
