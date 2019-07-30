@@ -251,7 +251,7 @@ def search_paper(doi, driver, engine):
     driver.get(search_engine)
 
     
-    # Enters search string into searchbox
+    # Enters search string into search bar
     if engine == 0:
         try: 
             search_bar = driver.find_element_by_xpath("/html/body/div/div[3]/form/div[2]/div/div[1]/div/div[1]/input")
@@ -264,7 +264,6 @@ def search_paper(doi, driver, engine):
         search_bar = driver.find_element_by_xpath('//*[@id="search_form_input_homepage"]')
         
     search_bar.send_keys(query_string)
-    
     
     time.sleep(random.randint(2, 7)) # to respect crawling
     
