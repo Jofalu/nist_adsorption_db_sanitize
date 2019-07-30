@@ -297,9 +297,12 @@ def search_paper(doi, driver, engine):
 
 def show_authors(driver): 
     """
-    Given the webdriver, shows more authors. 
+    Shows more authors on researchgate page by clicking on the show authors button
     
-    Returns the modified webdriver.
+    Parameters:
+    driver : webdriver - Existing webdriver that's already on the researchgate page of a paper
+    
+    Returns: the modified webdriver.
     """
     
     if not driver:
@@ -325,7 +328,9 @@ def show_authors(driver):
     return driver
 
 def remove_chars(string):
-    """Removes - and space characters from a string"""
+    """
+    Removes - and space characters from a string
+    """
     
     return string.translate({ord(char): None for char in "- "})
 
