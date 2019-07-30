@@ -518,6 +518,7 @@ def scrape_authors(search_engine):
     elif search_engine == "https://duckduckgo.com/":
         engine_number = 1
 
+    # Indicates which entries in dict to look for/replace
     # replace_flag = "NOT_FOUND"
     replace_flag = None
 
@@ -530,24 +531,27 @@ def scrape_authors(search_engine):
             if len(authors_and_papers[author]) == 0:
                 print("\n\nAUTHOR HAS NO PAPER")
                 authors_urls[author] = "AUTHOR_HAS_NO_PAPER_IN_DATABASE"
-
+                   
+                # Restarts driver
                 driver.quit()
                 time.sleep(1)
                 driver = obtain_driver(search_engine)
                 time.sleep(2)
-
+            # Author does have a paper
             else:
+                # Calls the scraping function
                 success = soup_it(show_authors(search_paper(authors_and_papers[author][0], driver, engine_number)), authors_ids[author][:3], authors_urls, author)
                 print(author)
                 sys.stdout.flush()
-
+                
+                # If the scrape fails, restart the driver
                 if success == -1 or success == 0:
                     driver.quit()
                     time.sleep(1)
                     driver = obtain_driver(search_engine)
                     time.sleep(2)
 
-            time.sleep(random.randint(6, 12)) # Increased from 1 to 6-12 to respect crawling
+            time.sleep(random.randint(6, 12)) # Increased from 1 to 6-12 (random wait) to respect crawling.
 
     driver.quit()
     
