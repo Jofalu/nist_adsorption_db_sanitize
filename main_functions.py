@@ -351,8 +351,8 @@ def compare_names(query_name, rg_name):
     Compare names while agnostic to special characters and rearranged names
     
     Parameters:
-    query_name : string - 
-    rg_name    : string - 
+    query_name : string - Name of the author as found in the database
+    rg_name    : string - Name of the author as found on researchgate
     """
     
     # If one string is empty and not the other, return false
@@ -443,10 +443,12 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
     Given the webdriver, parses its source for author URLs.
     
     Parameters:
-    driver        : webdriver object - 
-    author_tokens : list             - containing the searched author's name in tokens delimited by spaces
-    pairing_dict  : dict             - to store the URLs into (for the respective author indicated by author_id)
+    driver        : webdriver object - Existing webdriver that has already showed all authors on the researchgate page for a paper
+    author_tokens : list             - List containing the searched author's name in tokens delimited by spaces
+    pairing_dict  : dict             - To store the URLs into (for the respective author indicated by author_id)
     author_id     : int              - The searched author's id for usage in pairing_dict 
+    
+    Returns: the integer number of matches found on the page 
     """    
     
     time.sleep(1) # Increased to 1 for stability
@@ -577,6 +579,7 @@ def comparing_scraped():
     h_likely = [] # Highly likely, unknowns that have matches
     possible = [] # Moderately likely, the ones whose possible matches have similar characters
     unlikely = [] # Unlikely, few matching characters
+    
     # Pairs duplicates
     duplicate_pairing = {}
     for author, url in author_url_pairings.items():
@@ -594,6 +597,7 @@ def comparing_scraped():
             url_num_list.append(re.search(r"\d+", url).group(0))
     # Generates list for all url IDs that have > 1 urls that contain them
     same_num_list = [num for num, count in Counter(url_num_list).items() if count > 1]
+    
     # Iterates through nums then urls: longest_url -> longest (most complete name) to set as the new merged key
     # merged_entries -> merging of the values of the keys for assigning to the new merged key 
     for num in same_num_list:
@@ -615,6 +619,7 @@ def comparing_scraped():
             # Removes other unmerged entries
             else:
                 merged_pairing.pop(url)
+    # Iterates through merged_pairing. If there are any matches then append to highly likely list
     for url, matches in merged_pairing.items():
         if len(matches) > 1:
             h_likely.append(matches)
@@ -718,6 +723,7 @@ def update_values(cursor, root_id, mergee_id, new_root_name):
     new_root_name : string              - Name to be used to update root entry's name fields
     """
     
+    # "root" would indicate no name change. Otherwise, update name fields for root author entry
     if new_root_name != "root":
         string_tokens = new_root_name.split('_')
 
