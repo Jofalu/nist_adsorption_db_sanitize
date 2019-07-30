@@ -254,16 +254,16 @@ def search_paper(doi, driver, engine):
     # Enters search string into searchbox
     if engine == 0:
         try: 
-            blah = driver.find_element_by_xpath("/html/body/div/div[3]/form/div[2]/div/div[1]/div/div[1]/input")
+            search_bar = driver.find_element_by_xpath("/html/body/div/div[3]/form/div[2]/div/div[1]/div/div[1]/input")
         except NoSuchElementException: # Tries div[2]
             print("Trying second xpath")
-            blah = driver.find_element_by_xpath("/html/body/div/div[3]/form/div[2]/div/div[1]/div/div[2]/input")
+            search_bar = driver.find_element_by_xpath("/html/body/div/div[3]/form/div[2]/div/div[1]/div/div[2]/input")
         
     
     elif engine == 1:
-        blah = driver.find_element_by_xpath('//*[@id="search_form_input_homepage"]')
+        search_bar = driver.find_element_by_xpath('//*[@id="search_form_input_homepage"]')
         
-    blah.send_keys(query_string)
+    search_bar.send_keys(query_string)
     
     
     time.sleep(random.randint(2, 7)) # to respect crawling
@@ -273,7 +273,7 @@ def search_paper(doi, driver, engine):
         button = driver.find_element_by_xpath('//*[@id="gbqfbb"]')
         driver.execute_script("arguments[0].click()", button)
     elif engine == 1:
-        blah.send_keys(Keys.RETURN)
+        search_bar.send_keys(Keys.RETURN)
 
     # Waits for page to load
     old_driver = driver.find_element_by_tag_name('html')
