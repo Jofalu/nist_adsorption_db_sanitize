@@ -185,7 +185,7 @@ def obtain_driver(url):
     
     print("\n\n*****" + str(datetime.datetime.now()) + "*****")
     
-    driver = webdriver.Firefox(options=driver_options, executable_path=GeckoDriverManager().install())
+    driver = webdriver.Firefox(options=driver_options, executable_path=GeckoDriverManager().install()) # Creates webdrivers (uses GeckoDriverManager to install Firefox driver)
     
     # Needs to have the xpi in the current directory
     driver.install_addon(os.getcwd() + "/uBlock0@raymondhill.net.xpi", temporary=True)
