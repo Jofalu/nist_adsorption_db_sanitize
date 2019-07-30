@@ -457,16 +457,16 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
         return -1
     
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    thing = soup.find_all('div', {"class": "nova-v-person-list-item__title"})
+    people = soup.find_all('div', {"class": "nova-v-person-list-item__title"})
     
     print("Searching for: " + str(author_tokens))
     
     match_count = 0
     answer = ""
     
-    for stuff in thing:     
-        author_name = stuff.find('a').string
-        author_url = stuff.find('a').get("href")
+    for person in people:     
+        author_name = person.find('a').string
+        author_url = person.find('a').get("href")
 
         if compare_authors(author_tokens, author_name):
             print(str(author_url) + " <---------------- " + author_name)
