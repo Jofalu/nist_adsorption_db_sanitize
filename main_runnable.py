@@ -1,4 +1,5 @@
 import main_functions
+import time
    
 # Parameters to modify
 host_name = "http://pn108747.nist.gov:3680"
