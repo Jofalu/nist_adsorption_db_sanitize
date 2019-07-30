@@ -8,7 +8,11 @@ password="jfl2_mysql"
 database_name="DBADSORPTION_SANDBOX"
 
 main_functions.authors2()
+time.sleep(1)
 main_functions.pairing_unknown_authors()
+time.sleep(1)
 main_functions.scrape_authors()
+time.sleep(1)
 main_functions.comparing_scraped()
+time.sleep(1)
 main_functions.sql_database_writer()
