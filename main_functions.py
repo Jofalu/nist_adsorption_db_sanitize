@@ -180,7 +180,6 @@ def obtain_driver(url):
     Returns: a reference to the webdriver object
     """
     
-    buttons = []
     driver_options = Options() # Creates options object
     driver_options.headless = True # Indicates that the firefox browser gui will not open
     
