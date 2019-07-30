@@ -28,7 +28,12 @@ import itertools
 import mysql.connector as mariadb
 
 def authors2(host_name):
-    # Loads the API calls, only need to do this once per run session
+    """
+    Loads authors and papers from API and determines duplicate/unknown authors, writing them to duplicate_authors.txt and unknown_authors.txt.
+    
+    Parameters:
+    host_name: name of host of API (e.g. "http://pn108747.nist.gov:3680" or "http://dirac.nist.gov")
+    """
 
     # Loads the authors (and their IDs) to json
     authors = json.load(urllib.request.urlopen(host_name + "/adsorption.nist.gov/isodb/api/authors.json"))
@@ -120,6 +125,10 @@ def authors2(host_name):
         pprint(duplicate_authors, stream = duplicates_file)
 
 def pairing_unknown_authors():
+    """
+    Associates papers with authors and writes the pairing to a dictionary {author : list of DOIs).
+    """
+    
     # Loads the papers to json from text file
     with open("./stored_authors/papers.txt", encoding="utf8") as papers_file:
         papers = eval(papers_file.read())
@@ -163,9 +172,12 @@ def pairing_unknown_authors():
 
 def obtain_driver(url):
     """
-    Given a URL string, opens the URL in a headless Firefox instance. 
+    Opens the URL in a headless Firefox instance. 
     
-    Returns a reference to the webdriver object
+    Parameters:
+    url : string - URL of website to be opened
+    
+    Returns: a reference to the webdriver object
     """
     
     buttons = []
@@ -188,9 +200,9 @@ def click_and_wait(driver, element, find_elements_by):
     Clicks on element and waits for a page load. 
     
     Parameters:
-    driver == webdriver
-    element == string to find (class or css_selector)
-    find_elements_by == integer: 0 for css_selector, 1 for class_name.
+    driver           : webdriver - existing webdriver
+    element          : string    - string of the element to find (class or css_selector)
+    find_elements_by : int       - searches element by: 0 for css_selector, 1 for class_name.
     
     Only works on an actual page load (will hang if the click only runs dynamic JS on the same webpage)
     """
@@ -211,9 +223,14 @@ def click_and_wait(driver, element, find_elements_by):
     
 def search_paper(doi, driver, engine):
     """
-    Given a DOI, an existing driver, and an engine number (0 for Google, 1 for DDG), search for paper.
+    Searches for a paper's researchgate page.
     
-    Returns the associated webdriver.
+    Parameters:
+    doi    : string    - DOI of paper being searched
+    driver : webdriver - Existing webdriver object
+    engine : int       - Indicates which search engine to use (0 for Google, 1 for DuckduckGo)
+    
+    Returns: the associated webdriver.
     """
     
     print("\n---" + "New search " + str(datetime.datetime.now()) + "---")
@@ -313,13 +330,25 @@ def remove_chars(string):
     return string.translate({ord(char): None for char in "- "})
 
 def common_chars(string1, string2):
-    """Counts the number of common characters in two strings"""
+    """
+    Counts the number of common characters in two strings ignoring case.
+    
+    Parameters:
+    string1 : string
+    string2 : string
+    """
     
     common = Counter(string1.casefold()) & Counter(string2.casefold())
     return sum(common.values())
 
 def compare_names(query_name, rg_name):
-    """Compare names while agnostic to special characters and rearranged names"""
+    """
+    Compare names while agnostic to special characters and rearranged names
+    
+    Parameters:
+    query_name : string - 
+    rg_name    : string - 
+    """
     
     # If one string is empty and not the other, return false
     if (query_name == "" and rg_name != "") or (query_name != "" and rg_name == ""):
@@ -333,17 +362,22 @@ def compare_names(query_name, rg_name):
     return len(query_clean) <= len(rg_clean) and common_chars(query_clean, rg_clean) == len(query_clean)
 
 def initial_check(name):
-    """Checks if name is an initial, returns true if so"""
+    """
+    Checks if name is an initial, returns true if so
+    
+    Parameters:
+    name : string
+    """
     
     return (len(name) == 1) or ("." in name)
 
 def compare_authors(query_author, rg_author):
     """
-    Compares authors
+    Compares authors to see if they are the same person
     
     Parameters:
-    query_author : list of of queried author's first name then last name
-    rg_author    : string of researchgate author's full name
+    query_author : list   - queried author's first name then last name
+    rg_author    : string - researchgate author's full name (since it's not already tokenized when extracted)
     """
     
     # Checks if rg_author has any special non-ASCII characters. Translates query_author based on that and sets the author's first and last name strings.
@@ -404,10 +438,10 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
     Given the webdriver, parses its source for author URLs.
     
     Parameters:
-    driver == webdriver
-    author_tokens == list containing the searched author's name in tokens delimited by spaces
-    pairing_dict == Dictionary to store the URLs into (for the respective author indicated by author_id)
-    author_id == The searched author's id for usage in pairing_dict 
+    driver        : webdriver object - 
+    author_tokens : list             - containing the searched author's name in tokens delimited by spaces
+    pairing_dict  : dict             - to store the URLs into (for the respective author indicated by author_id)
+    author_id     : int              - The searched author's id for usage in pairing_dict 
     """    
     
     time.sleep(1) # Increased to 1 for stability
@@ -447,6 +481,13 @@ def soup_it(driver, author_tokens, pairing_dict, author_id):
     return match_count
 
 def scrape_authors(search_engine):
+    """
+    Scrapes author URLs from researchgate and stores them to a dictionary.
+    
+    Parameters:
+    search_engine : string - search engine URL to be used for scraping
+    """
+    
     original_file_descriptor = sys.stdout
     sys.stdout = open("./scraping_log.txt", "a")
     
@@ -508,6 +549,10 @@ def scrape_authors(search_engine):
     sys.stdout = original_file_descriptor
     
 def comparing_scraped():
+    """
+    Compares scraped authors to each other to generate likely pairs.
+    """
+    
     with open("./stored_authors/author_url_pairings.txt", encoding="utf8") as pairings_file:
         author_url_pairings = eval(pairings_file.read())
     with open("./stored_authors/unknown_authors.txt", encoding="utf8") as unknowns_file:
@@ -658,7 +703,15 @@ def select_and_print(cursor, command_string):
     print("---------------")
     
 def update_values(cursor, root_id, mergee_id, new_root_name):
-    # Updates given, middle, and family names of root_id
+    """
+    Updates values in a database by updating the root entry's name and merging the other entry into it
+    
+    Parameters:
+    cursor        : MySQL cursor object - Existing MySQL cursor object
+    root_id       : string              - ID of the author that should have its name changed
+    mergee_id     : string              - ID of author that should be deleted and have its foreign keys redirected to the root_id
+    new_root_name : string              - Name to be used to update root entry's name fields
+    """
     
     if new_root_name != "root":
         string_tokens = new_root_name.split('_')
