@@ -764,6 +764,8 @@ def sql_database_writer(username, password, database_name):
         mergees = eval(mergees_out.read())
     
     mariadb_connect = mariadb.connect(user=username, passwd=password, database=database_name)
+    cursor = mariadb_connect.cursor()
+    
     already_done_foreign = []
     for root, pair in mergees.items():
 
