@@ -280,8 +280,6 @@ def search_paper(doi, driver, engine):
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     if "/sorry/" in driver.current_url:
         raise Exception("Captcha'd")
-        
-        return None
     elif "google.com" in driver.current_url:
         print("Paper not found")
         return None
