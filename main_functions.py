@@ -576,8 +576,6 @@ def comparing_scraped():
     sorted_unpacked_duplicates = sorted(list(unpacked_duplicates))
     
     h_likely = [] # Highly likely, unknowns that have matches
-    possible = [] # Moderately likely, the ones whose possible matches have similar characters
-    unlikely = [] # Unlikely, few matching characters
     
     # Pairs duplicates
     duplicate_pairing = {}
