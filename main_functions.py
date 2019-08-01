@@ -277,9 +277,8 @@ def search_paper(doi, driver, engine):
     time.sleep(2) # increased from .5 to 2 to respect crawling
     
     # Checks if paper was found
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
     if "/sorry/" in driver.current_url:
-        raise Exception("Captcha'd")
+        raise Exception("Captcha'd. You need to run it again later")
     elif "google.com" in driver.current_url:
         print("Paper not found")
         return None
