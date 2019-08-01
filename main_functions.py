@@ -647,8 +647,6 @@ def comparing_scraped():
                 h_likely.append([author, pair_id])
         unknown_pairing[author] = found
     
-    all_h_likely_values = list(itertools.chain(*h_likely))
-    
     # Selects an author as the "root" (the longest/one with the most special characters)
     processing_roots = {}
     root_names = {}
