@@ -132,9 +132,6 @@ def pairing_unknown_authors():
     # Loads the papers to json from text file
     with open("./stored_authors/papers.txt", encoding="utf8") as papers_file:
         papers = eval(papers_file.read())
-    # Loads authors and their ids to json from text file
-    with open("./stored_authors/authors_ids.txt", encoding="utf8") as authors_file:
-        authors_ids = eval(authors_file.read())
     # Loads duplicate authors
     with open("./stored_authors/duplicate_authors.txt") as dup_file:
         duplicate_authors = eval(dup_file.read())
