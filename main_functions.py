@@ -684,6 +684,9 @@ def comparing_scraped():
             print(thing)
             print(author_url_pairings[thing])
         print("-----------------------------\n")
+        
+    # Prints duplicate pairings
+    print("----- Duplicate Pairings -----")
 
     with open("./stored_authors/root_names.txt", 'w') as root_out:
         pprint(root_names, stream = root_out)
