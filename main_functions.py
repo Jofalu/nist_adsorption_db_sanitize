@@ -90,7 +90,7 @@ def authors2(host_name):
                 matches.append( person[1] )
         if not matches: # If the author has no matches, they're unique, this list is to pop them later
             matchless_authors.append(unknown)
-
+    
     # Write all of the unknowns, even with no matches to a file
     with open("./stored_authors/all_unknown_authors.txt", "w") as unknowns_file:
         pprint(unknown_authors, stream = unknowns_file)
@@ -576,6 +576,7 @@ def comparing_scraped():
     sorted_unpacked_duplicates = sorted(list(unpacked_duplicates))
     
     h_likely = [] # Highly likely, unknowns that have matches
+    possible = [] # Moderately likely, may require manual inspection
     
     # Pairs duplicates
     duplicate_pairing = {}
