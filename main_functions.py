@@ -672,6 +672,18 @@ def comparing_scraped():
         to_be_merged.remove(root_id)
         processing_roots[root_id] = to_be_merged
         root_names[root_id] = root_name
+    
+    # Prints unsure pairings
+    print("----- Unsure Pairings -----")
+    for unknown in unknown_pairing:
+        print("Unknown author: " + str(authors_ids[unknown]))
+        print(author_url_pairings[unknown])
+        print("- - - - -")
+        for thing in unknown_authors[unknown]:
+            print(authors_ids[thing])
+            print(thing)
+            print(author_url_pairings[thing])
+        print("-----------------------------\n")
 
     with open("./stored_authors/root_names.txt", 'w') as root_out:
         pprint(root_names, stream = root_out)
