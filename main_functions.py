@@ -553,7 +553,12 @@ def scrape_authors(search_engine):
         pprint(authors_urls, stream = dup_file)
         
     sys.stdout = original_file_descriptor
-    
+
+def find_key_from_value(query_value, dictionary):
+    for key, value in dictionary.items():
+        if query_value in value:
+            return key
+
 def comparing_scraped():
     """
     Compares scraped authors to each other to generate likely pairs.
@@ -687,6 +692,7 @@ def comparing_scraped():
         
     # Prints duplicate pairings
     print("----- Duplicate Pairings -----")
+    
 
     with open("./stored_authors/root_names.txt", 'w') as root_out:
         pprint(root_names, stream = root_out)
