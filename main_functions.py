@@ -555,6 +555,14 @@ def scrape_authors(search_engine):
     sys.stdout = original_file_descriptor
 
 def find_key_from_value(query_value, dictionary):
+    """
+    Returns key of an entry in a dictionary given its value.
+    
+    Parameters:
+    query_value : Value used to search. Usually a string but can be any data type depending on the dictionary
+    dictionary  : Dictionary being searched
+    """
+    
     for key, value in dictionary.items():
         if query_value in value:
             return key
