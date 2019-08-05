@@ -26,4 +26,4 @@ Duplicate Author:
 
 Duplicate author index, Duplicate author id
 Duplicate author name, Duplicate author URL
----------- Divider (inidicates new entry)
+---------- Divider (Indicates new entry)
