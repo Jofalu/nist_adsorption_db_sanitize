@@ -688,19 +688,35 @@ def comparing_scraped():
     
     # Prints unsure pairings
     print("----- Unsure Pairings -----")
-    for unknown in unknown_pairing:
-        print("Unknown author: " + str(authors_ids[unknown]))
+    for unknown in unknown_pairing: 
+        print(unknown)
+        print(authors_ids[unknown], end = ' ')
         print(author_url_pairings[unknown])
         print("- - - - -")
+        index = 0
         for thing in unknown_authors[unknown]:
-            print(authors_ids[thing])
+            print(index, end = ' ')
             print(thing)
+            print("  ", end = '')
+            print(authors_ids[thing], end = ' ')
             print(author_url_pairings[thing])
+            index += 1
         print("-----------------------------\n")
         
     # Prints duplicate pairings
     print("----- Duplicate Pairings -----")
-    
+    for url, duplicates in duplicate_pairing.items():
+        if len(duplicates) == 1:
+            match_list = duplicate_authors[find_key_from_value(duplicates[0], duplicate_authors)]
+            index = 0
+            for author in match_list:
+                print(index, end = ' ')
+                print(author)
+                print("  ", end = '')
+                print(authors_ids[author], end = ' ')
+                print(author_url_pairings[author])
+                index += 1
+            print("-----------------------------\n")
 
     with open("./stored_authors/root_names.txt", 'w') as root_out:
         pprint(root_names, stream = root_out)
