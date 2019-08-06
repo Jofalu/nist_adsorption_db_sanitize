@@ -12,6 +12,7 @@ Overall, the script will grab the authors and paper bibliography information fro
 Originally, the methodology for scraping was to search the DOI on the ResearchGate website. This was done by simply entering the DOI in the search box. After a design change in ResearchGate's search, a search had to be made then the "Data" tab had to be clicked on. Eventually, this functionality was removed as well. Now the scraping is done by searching "researchgate.net" and the DOI on google.com and clicking on "I'm feeling lucky" to immediately open the webpage. This isn't foolproof and there are occasionally time where it doesn't work. 1) ResearchGate may not host the paper. 2) Very rarely ResearchGate will open a related paper that reference the paper being searched. 
 
 Unsure author match output format:
+
 Unknown Author:
 
 > Unknown Author ID\
