@@ -16,14 +16,14 @@ Unknown Author:
 
 > Unknown Author ID\
 > Unknown Author Name, Unknown Author URL\
-> Small Divider\
+> -----\
 > Author match list index, Author match ID\
 > Author match name, Author match URL\
 > (Repeat)\
-> Large Divider (indicates next entry)
+> ---------- (indicates next entry)
 
 Duplicate Author:
 
 > Duplicate author index, Duplicate author id\
 > Duplicate author name, Duplicate author URL\
-> Large Divider (Indicates new entry)\
+> ---------- (Indicates new entry)\
