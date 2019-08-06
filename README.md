@@ -14,16 +14,16 @@ Originally, the methodology for scraping was to search the DOI on the ResearchGa
 Unsure author match output format:
 Unknown Author:
 
-Unknown Author ID
-Unknown Author Name, Unknown Author URL
-Small Divider
-Author match index in list, Author match ID
-Author match name, Author match URL
-(Repeat)
+Unknown Author ID\
+Unknown Author Name, Unknown Author URL\
+Small Divider\
+Author match index in list, Author match ID\
+Author match name, Author match URL\
+(Repeat)\
 Large Divider (indicates next entry)
 
 Duplicate Author:
 
-Duplicate author index, Duplicate author id
-Duplicate author name, Duplicate author URL
-Large Divider (Indicates new entry)
+Duplicate author index, Duplicate author id\
+Duplicate author name, Duplicate author URL\
+Large Divider (Indicates new entry)\
