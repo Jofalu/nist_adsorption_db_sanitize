@@ -725,7 +725,7 @@ def comparing_scraped():
 
 def select_and_print(cursor, command_string):
     """
-    Selects entries from database and prints it out to the python interpreter. 
+    Selects entries from database and prints it out to the python interpreter. Used as a debugging tool.
     
     Parameters: 
     cursor         : Sqlite cursor object - the sqlite3 cursor created from .cursor() on a connected sqlite 3 database
