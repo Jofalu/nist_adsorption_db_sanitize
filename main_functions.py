@@ -636,10 +636,12 @@ def comparing_scraped():
             h_likely.append(matches)
     
     # Pairs unknown names (e.g. first initial names)
+    # Initializes dict for pairing unknowns
     unknown_pairing = {}
     for unknown in unknown_authors:
         unknown_pairing[unknown] = None
-
+    
+    # Iterates through all unknown_authors and compares them 
     for author, pair in unknown_authors.items():
         if author in author_url_pairings:
             author_url = author_url_pairings[author]
@@ -649,7 +651,8 @@ def comparing_scraped():
         found = "Unsure"
         for pair_id in pair:
             pair_url = author_url_pairings[pair_id]
-
+            
+            # Case that they don't have researchgate profiles, which gives them a "contributions" page instead
             if "contributions" in author_url and "contributions" in pair_url:
                 author_num = re.search(r"\d+", author_url).group(0)
                 pair_num = re.search(r"\d+", pair_url).group(0)
