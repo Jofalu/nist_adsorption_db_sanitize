@@ -644,7 +644,7 @@ def comparing_scraped():
         if author in author_url_pairings:
             author_url = author_url_pairings[author]
         else:
-            author_url = "no"
+            author_url = "not paired"
 
         found = "Unsure"
         for pair_id in pair:
