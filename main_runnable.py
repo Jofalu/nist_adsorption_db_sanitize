@@ -2,9 +2,8 @@ import main_functions
 import time
    
 # Parameters to modify
-host_name = "http://pn108747.nist.gov:3680"
-search_engine = "https://www.google.com"  # i.e. 0
-# search_engine = "https://duckduckgo.com/" # i.e. 1. DON'T USE THIS FOR NOW (not very high accuracy)
+host_name = "http://pn108747.nist.gov:3680" # specified the API host up here
+search_engine = "https://www.google.com"  # i.e. 0 or "https://duckduckgo.com/" i.e. 1 (don't use duckduckgo)
 username="jfl2@localhost"
 password="jfl2_mysql"
 database_name="DBADSORPTION_SANDBOX"
