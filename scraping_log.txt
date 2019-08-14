@@ -1,19 +1,1 @@
 
-
-
-*****2019-07-15 09:47:47.249364*****
-
-Checking for linux64 geckodriver:v0.24.0 in cache
-Driver found in /home/local/NIST/jfl2/.wdm/geckodriver/v0.24.0/linux64/geckodriver
-
-
-*****2019-07-29 11:59:11.921160*****
-
-Checking for linux64 geckodriver:v0.24.0 in cache
-Driver found in /home/local/NIST/jfl2/.wdm/geckodriver/v0.24.0/linux64/geckodriver
-
-
-*****2019-07-29 13:43:45.880545*****
-
-Checking for linux64 geckodriver:v0.24.0 in cache
-Driver found in /home/local/NIST/jfl2/.wdm/geckodriver/v0.24.0/linux64/geckodriver
