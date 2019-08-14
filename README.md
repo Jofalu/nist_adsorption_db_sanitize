@@ -27,4 +27,4 @@ Duplicate Author:
 
 > Duplicate author index, Duplicate author id\
 > Duplicate author name, Duplicate author URL\
-> ---------- (Indicates new entry)\
+> ---------- (Indicates new entry)
